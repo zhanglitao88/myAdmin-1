@@ -5,6 +5,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ *@Author 、T
+ *@Description 这是注释
+ *@Date
+ *@Param
+ *@return
+ **/
 @SpringBootApplication
 @MapperScan("com.test.admin.admin.dao")
 @ComponentScan(basePackages = {"com.test.admin.admin.*"})
