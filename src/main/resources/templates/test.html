@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- common header -->
+<header th:replace="common/header95::html"></header>
+<body>
+<div class="frame">
+    <!-- Sidebar start-->
+    <div th:replace="common/sidebar::html"></div>
+    <!-- /Sidebar end-->
+    <!-- Main content starts here-->
+    <div class="content">
+        <!-- Navbar start-->
+        <div th:replace="common/navbar::html"></div>
+        <!-- /Navbar end-->
+        <div id="main-content">
+            <!-- breadcrumb start -->
+            <div th:replace="common/breadcrumb::html"></div>
+            <!-- /breadcrumb end -->
+            <!-- Most visited and Traffic sources Graph -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-archon main-graph">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">数据列表</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline clearfix m-bot15">
+                                <form role="form" class="form-inline"
+                                      action="toCustomerPage.htm" id="queryForm" method="post">
+                                    <input type="hidden" value="queryForm" id="formId" />
+                                    <input type="hidden" value="toCustomerPage.htm" id="formName" />
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label">手机号:</label>
+                                        <input type="text" class="form-control" id="inputEmail1" placeholder="输入手机号" value="">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label">姓名:</label>
+                                        <input type="text" class="form-control" id="customerName" name="customerName" placeholder="输入姓名" value="">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label">开始时间</label>
+                                        <input class="form-control select_dates"  id="start" name="begin"  value="" type="text" placeholder="请选择日期">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label">结束时间</label>
+                                        <input class="form-control select_date" id="end" name="end"   value="" type="text" placeholder="请选择日期">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label">&nbsp;</label>
+                                        <div class="clearfix">
+                                            <button class="btn btn-info" type="button" onclick="">查询</button>
+                                            <button class="btn btn-info" type="button" onclick="">导出</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- table length-->
+                            <div th:replace="common/dataTables_length::html"></div>
+                            <!-- /table length-->
+                            <table  class="table table-bordered table-hover table-striped display" id="dynamicData" >
+                                <thead>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th>Platform(s)</th>
+                                    <th>Engine version</th>
+                                    <th>CSS grade</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="odd gradeX">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                        Explorer 4.0</td>
+                                    <td>Win 95+</td>
+                                    <td class="center"> 4</td>
+                                    <td class="center">X</td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                        Explorer 5.0</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5</td>
+                                    <td class="center">C</td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                        Explorer 5.5</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5.5</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="even gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                        Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet Explorer 7</td>
+                                    <td>Win XP SP2+</td>
+                                    <td class="center">7</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="even gradeA">
+                                    <td>Trident</td>
+                                    <td>AOL browser (AOL desktop)</td>
+                                    <td>Win XP</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Gecko</td>
+                                    <td>Mozilla 1.8</td>
+                                    <td>Win 98+ / OSX.1+</td>
+                                    <td class="center">1.8</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Gecko</td>
+                                    <td>Seamonkey 1.1</td>
+                                    <td>Win 98+ / OSX.2+</td>
+                                    <td class="center">1.8</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Gecko</td>
+                                    <td>Epiphany 2.20</td>
+                                    <td>Gnome</td>
+                                    <td class="center">1.8</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Presto</td>
+                                    <td>Opera 9.0</td>
+                                    <td>Win 95+ / OSX.3+</td>
+                                    <td class="center">-</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Presto</td>
+                                    <td>Opera 9.2</td>
+                                    <td>Win 88+ / OSX.3+</td>
+                                    <td class="center">-</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th>Platform(s)</th>
+                                    <th>Engine version</th>
+                                    <th>CSS grade</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                            <!-- table info -->
+                            <div  th:replace="common/dataTables_info::html"></div>
+                            <!-- /table info -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Main Content  @7 -->
+    </div>
+    <!-- / Content @5 -->
+    <!-- row footer -->
+    <div th:replace="common/footer::html"></div>
+    <!-- /row footer -->
+</div> <!-- Frame -->
+<!-- common footer-->
+<script id="footer95" th:replace="common/footer95::html"></script>
+</body>
+</html>

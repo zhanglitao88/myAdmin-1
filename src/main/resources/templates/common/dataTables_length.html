@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div id="dataTables_length" class="dataTables_length"><label>每页显示<select  size="1" name="dataTables_length" onChange="changePage(this);">
+    <option value="15" th:selected="${pageBean.pageSize==15}? 'selected'">15</option>
+    <option value="25" th:selected="${pageBean.pageSize==25}? 'selected'">25</option>
+    <option value="50" th:selected="${pageBean.pageSize==50}? 'selected'">50</option>
+    <option value="100" th:selected="${pageBean.pageSize==100}? 'selected'">100</option>
+</select> 条数据</label></div>
+<script type="text/javascript">
+    function changePage(obj) {
+        $("#" + $("#formId").val()).attr("action", $("#formName").val()).append("<input type='hidden' name='pageSize' value='" + $(obj).val() + "''>").submit();
+    }
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="panel-footer" style="height: 80px">
+<div class="dataTables_info" id="example_info" th:if="${pageBean.pageNo == pageBean.totalPages }" th:text="|显示从第${pageBean.startRowNum+1}条到第${pageBean.rows}条,总共 ${pageBean.rows} 条数据|"></div>
+    <div class="dataTables_info" id="example_info" th:if="${pageBean.pageNo != pageBean.totalPages }" th:text="|显示从第${pageBean.startRowNum+1}条到第${pageBean.pageNo*pageBean.pageSize}条,总共 ${pageBean.rows} 条数据|"></div>
+<div class="dataTables_paginate paging_bootstrap pagination pull-right" style="margin: 0px 0px">
+    <ul  class="pagination pagination-inverse pull-right kinoko_lis">
+        <li th:class="${pageBean.pageNo == 1}? ' disabled':''" th:onclick="${pageBean.pageNo == 1}?'selectFirstDisable()':|changeNextPage(${pageBean.pageSize},1)|"><a href="javascript:void(0);">首页</a></li>
+        <li th:class="${pageBean.pageNo == 1}? ' disabled':''" th:onclick="${pageBean.pageNo == 1}?'selectFirstDisable()':|changeNextPage(${pageBean.pageSize}, ${pageBean.pageNo-1})|"><a href="javascript:void(0);">上一页</a></li>
+        <li th:if="${pageBean.startNo>2}"><a  href="javascript:void(0);"  th:onclick="|changeNextPage(${pageBean.pageSize },1)|" >1 </a></li>
+        <li th:if="${pageBean.startNo>2}" class=""><a href="javascript:void(0);"> ...</a></li>
+        <li  th:each="pageNo : ${#numbers.sequence(pageBean.startNo, pageBean.endNo)}" th:class="${pageBean.pageNo eq pageNo}? 'active' : ''" th:onclick="|changeNextPage(${pageBean.pageSize}, ${pageNo})|"><a href="javascript:void(0);" th:text="${pageNo}"></a></li>
+        <li th:if="${pageBean.endNo<pageBean.totalPages}" class=""><a href="javascript:void(0);"> ...</a></li>
+        <li th:if="${pageBean.endNo<pageBean.totalPages}"><a href="javascript:void(0);" th:onclick="|changeNextPage(${pageBean.pageSize },${pageBean.totalPages })|" th:text="${pageBean.totalPages}"></a></li>
+        <li th:class="${pageBean.pageNo == pageBean.totalPages}? 'disabled':''" th:onclick="${pageBean.pageNo == pageBean.totalPages}?'selectFirstDisable()':|changeNextPage(${pageBean.pageSize}, ${pageBean.pageNo+1})|"><a href="javascript:void(0);">下一页</a></li>
+        <li th:class="${pageBean.pageNo == pageBean.totalPages}? 'disabled':''" th:onclick="${pageBean.pageNo == pageBean.totalPages}?'selectFirstDisable()':|changeNextPage(${pageBean.pageSize}, ${pageBean.totalPages})|"><a href="javascript:void(0);">尾页</a></li>
+    </ul>
+</div>
+</div>
+<script type="text/javascript">
+    function changeNextPage(pageSize, pageNo) {
+        $("#opContent").val("");
+        $("#operationLogListOpName").val("");
+        $("#" + $("#formId").val()).attr("action", $("#formName").val())
+            .append("<input type='hidden' name='pageSize' value='" + pageSize + "''>")
+            .append("<input type='hidden' name='pageNo' value='" + pageNo + "''>")
+            .submit();
+    }
+
+    function selectFirstDisable(){
+        if($('.kinoko_lis').find('.active').find('a').html() == '上一页'|| $('.kinoko_lis').find('.active').find('a').html() == '首页'){
+            $($('.kinoko_lis').find('li')[2]).addClass('active')
+        }
+        if($('.kinoko_lis').find('.active').find('a').html() == '下一页'||$('.kinoko_lis').find('.active').find('a').html() == '尾页'){
+            $($('.kinoko_lis').find('li')[$('.kinoko_lis').find('li').length - 3]).addClass('active')
+        }
+    }
+</script>

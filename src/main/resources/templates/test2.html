@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- common header -->
+<header th:replace="common/header95::html"></header>
+<body>
+<div class="frame">
+    <!-- Sidebar start-->
+    <div th:replace="common/sidebar::html"></div>
+    <!-- /Sidebar end-->
+    <!-- Main content starts here-->
+    <div class="content">
+        <!-- Navbar start-->
+        <div th:replace="common/navbar::html"></div>
+        <!-- /Navbar end-->
+        <div id="main-content">
+            <!-- breadcrumb start -->
+            <div th:replace="common/breadcrumb::html"></div>
+            <!-- /breadcrumb end -->
+            <!-- Most visited and Traffic sources Graph -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-archon main-graph">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">数据列表</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline clearfix m-bot15">
+                                <form role="form" class="form-inline"
+                                      action="toTravelListPage" id="queryForm" method="post">
+                                    <input type="hidden" value="queryForm" id="formId" />
+                                    <input type="hidden" value="toTravelListPage" id="formName" />
+                                <div class="form-group col-md-2">
+                                    <label class="control-label">手机号:</label>
+                                    <input type="text" class="form-control" id="inputEmail1" placeholder="输入手机号" value="">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="control-label">姓名:</label>
+                                    <input type="text" class="form-control" id="customerName" name="customerName" placeholder="输入姓名" value="">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="control-label">开始时间</label>
+                                    <input class="form-control select_date"  id="start" name="begin"  type="text" placeholder="请选择日期">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="control-label">结束时间</label>
+                                    <input class="form-control select_datetime"  id="end" name="end" type="text" placeholder="请选择日期">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="control-label">&nbsp;</label>
+                                    <div class="clearfix">
+                                        <button class="btn btn-info" type="button" onclick="">查询</button>
+                                        <button class="btn btn-info" type="button" onclick="">导出</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <div id="example_wrapper" class="dataTables_wrapper" role="grid">
+                                <!-- table length-->
+                                <div th:replace="common/dataTables_length::html"></div>
+                                <!-- /table length-->
+                                <table class="table table-bordered table-hover table-striped display dataTable" id="example" aria-describedby="example_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="" style="width:5%">序号</th>
+                                    <th class="sorting_asc" style="width: 7%">部门名称</th>
+                                    <th class="sorting_desc" style="width: 14%">出差地点</th>
+                                    <th class="sorting" style="width: 7%">出差时间</th>
+                                    <th class="sorting" style="width: 7%">返回时间</th>
+                                    <th class="sorting" style="width: 7%">出差人数</th>
+                                    <th class="sorting" style="width: 7%">出差费用</th>
+                                    <th class="sorting" >出差原因</th>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>部门名称</th>
+                                    <th>出差地点</th>
+                                    <th>出差时间</th>
+                                    <th>返回时间</th>
+                                    <th>出差人数</th>
+                                    <th>出差费用</th>
+                                    <th>出差原因</th>
+                                </tr>
+                                </tfoot>
+                                <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                <tr th:each="prod : ${pageBean.list}">
+                                    <td class="center" th:text="${prodStat.index+1}"></td>
+                                    <td class="center" th:text="${prod.deptName}"></td>
+                                    <td th:text="${prod.travelSite}"></td>
+                                    <td th:text="${#dates.format(prod.travelStartTime, 'yyyy-MM-dd')}"></td>
+                                    <td th:text="${#dates.format(prod.travelBackTime, 'yyyy-MM-dd')}"></td>
+                                    <td th:text="${prod.travelPersonCount}"></td>
+                                    <td th:text="${prod.travelAmount}"></td>
+                                    <td th:text="${prod.travelReason}"></td>
+                                </tr>
+                                </tbody></table>
+                                <!-- table info -->
+                                <div  th:replace="common/dataTables_info::html"></div>
+                                <!-- /table info -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Main Content  @7 -->
+    </div>
+    <!-- / Content @5 -->
+    <!-- row footer -->
+    <div th:replace="common/footer::html"></div>
+    <!-- /row footer -->
+</div> <!-- Frame -->
+<!-- common footer-->
+<script id="footer95" th:replace="common/footer95::html"></script>
+</body>
+</html>

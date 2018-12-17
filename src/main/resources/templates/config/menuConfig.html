@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- common header -->
+<header th:replace="common/header95::html"></header>
+<body>
+<div class="frame">
+    <!-- Sidebar start-->
+    <div th:replace="common/sidebar::html"></div>
+    <!-- /Sidebar end-->
+    <!-- Main content starts here-->
+    <div class="content">
+        <!-- Navbar start-->
+        <div th:replace="common/navbar::html"></div>
+        <!-- /Navbar end-->
+        <div id="main-content">
+            <!-- breadcrumb start -->
+            <div th:replace="common/breadcrumb::html"></div>
+            <!-- /breadcrumb end -->
+            <!-- Most visited and Traffic sources Graph -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel panel-archon main-graph">
+                        <header class="panel-heading"><h3 class="panel-title">菜单配置</h3></header>
+                        <div class="panel-body">
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-info btn-lg btn-block m-bot15"
+                                        onclick="toAddMenu(1,1)"><i class="icon-plus"></i> 添加一级菜单
+                                </button>
+                                <section class="panel tasks-widget categorys_box">
+                                    <div class="panel-body tasks-widget">
+                                        <ul class="task-list" id="firstMenu">
+                                                <li th:each="first : ${firstMenu}" th:id="${first.menuId}" onclick="" level = "1" class="item">
+                                                    <div class="task-title item"><span class="task-title-sp" th:text="${first.menuName}"></span>
+                                                        <div class="pull-right">
+                                                            <button class="btn btn-primary btn-xs" onclick=""><i class="icon-pencil"></i>
+                                                            </button>
+                                                            &nbsp;
+                                                            <button class="btn btn-danger btn-xs del_btn" onclick=""><i class="icon-trash "></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-info btn-lg btn-block m-bot15"
+                                        onclick="toAddMenu(2,1)"><i class="icon-plus"></i> 添加二级菜单
+                                </button>
+                                <section class="panel tasks-widget categorys_box">
+                                    <div class="panel-body">
+                                        <ul class="task-list" id="secondMenu">
+                                            <li th:each="first : ${firstMenu}" id="" onclick="" level = "1" class="item">
+                                                <div class="task-title item"><span class="task-title-sp" th:text="${first.menuName}"></span>
+                                                    <div class="pull-right">
+                                                        <button class="btn btn-primary btn-xs" onclick=""><i class="icon-pencil"></i>
+                                                        </button>
+                                                        &nbsp;
+                                                        <button class="btn btn-danger btn-xs del_btn" onclick=""><i class="icon-trash "></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-info btn-lg btn-block m-bot15"
+                                        onclick="toAddMenu(3,1)"><i class="icon-plus"></i> 添加三级菜单
+                                </button>
+                                <section class="panel tasks-widget categorys_box">
+                                    <div class="panel-body">
+                                        <ul class="task-list" id="thirdMenu">
+                                            <li th:each="first : ${firstMenu}" id="" onclick="" level = "1" class="item">
+                                                <div class="task-title item"><span class="task-title-sp" th:text="${first.menuName}"></span>
+                                                    <div class="pull-right">
+                                                        <button class="btn btn-primary btn-xs" onclick=""><i class="icon-pencil"></i>
+                                                        </button>
+                                                        &nbsp;
+                                                        <button class="btn btn-danger btn-xs del_btn" onclick=""><i class="icon-trash "></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- /Main Content  @7 -->
+    </div>
+    <!-- / Content @5 -->
+    <!-- row footer -->
+    <div th:replace="common/footer::html"></div>
+    <!-- /row footer -->
+</div> <!-- Frame -->
+<!-- common footer-->
+<script id="footer95" th:replace="common/footer95::html"></script>
+</body>
+<script th:src="@{com/config/menuConfig.js}"></script>
+</html>
