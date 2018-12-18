@@ -30,7 +30,7 @@
     delete from pb_menu
     where menu_id = #{menuId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.test.admin.admin.pojo.PbMenu" >
+  <insert id="insert" parameterType="com.arch.common.pojo.PbMenu" >
     insert into pb_menu (menu_id, menu_name, menu_url, 
       menu_type, menu_sort, parent_id, 
       create_time, modify_time, del_flag, 
@@ -42,7 +42,7 @@
       #{menuLevel,jdbcType=INTEGER}, #{menuImg,jdbcType=VARCHAR}, #{menuPath,jdbcType=VARCHAR}, 
       #{menuFunction,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.test.admin.admin.pojo.PbMenu" >
+  <insert id="insertSelective" parameterType="com.arch.common.pojo.PbMenu" >
     insert into pb_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="menuId != null" >
@@ -127,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.admin.admin.pojo.PbMenu" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.arch.common.pojo.PbMenu" >
     update pb_menu
     <set >
       <if test="menuName != null" >
@@ -169,7 +169,7 @@
     </set>
     where menu_id = #{menuId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.admin.admin.pojo.PbMenu" >
+  <update id="updateByPrimaryKey" parameterType="com.arch.common.pojo.PbMenu" >
     update pb_menu
     set menu_name = #{menuName,jdbcType=VARCHAR},
       menu_url = #{menuUrl,jdbcType=VARCHAR},

@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
 
     <artifactId>arch_web_api</artifactId>
-    <packaging>pom</packaging>
     <modules>
         <module>arch_admin</module>
     </modules>

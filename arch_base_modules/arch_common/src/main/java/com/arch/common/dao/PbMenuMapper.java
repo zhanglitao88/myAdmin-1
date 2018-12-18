@@ -2,10 +2,8 @@ package com.arch.common.dao;
 
 
 import com.arch.common.pojo.PbMenu;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
-@Component(value = "pbMenuMapper")
 public interface PbMenuMapper {
     int deleteByPrimaryKey(Integer menuId);
 
