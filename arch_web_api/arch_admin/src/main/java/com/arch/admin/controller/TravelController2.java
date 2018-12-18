@@ -1,6 +1,7 @@
 package com.arch.admin.controller;
 
 import com.arch.common.pojo.TlCostTravel;
+import com.arch.common.service.TelegramService;
 import com.arch.common.service.TravelService;
 import com.arch.common.utils.PageBean;
 import org.apache.log4j.Logger;
@@ -21,9 +22,12 @@ public class TravelController2 {
     private static final Logger logger = Logger.getLogger(TravelController2.class);
     @Autowired
     private TravelService travelService;
+    @Autowired
+    private TelegramService telegramService;
 
     @RequestMapping("toTravelListPage")
     public String toTravelListPage(Model model, PageBean pageBean){
+        telegramService.selectById(40);
         model.addAttribute("testValue","test2");
 
         TlCostTravel costTravel = new TlCostTravel();
