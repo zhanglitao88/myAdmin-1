@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.arch.common.dao.TlTelegramMapper">
+  <resultMap id="BaseResultMap" type="com.arch.common.pojo.TlTelegram">
+    <id column="tele_id" jdbcType="INTEGER" property="teleId" />
+    <result column="tele_code" jdbcType="VARCHAR" property="teleCode" />
+    <result column="tele_name" jdbcType="VARCHAR" property="teleName" />
+    <result column="audit_person" jdbcType="VARCHAR" property="auditPerson" />
+    <result column="draft_person" jdbcType="VARCHAR" property="draftPerson" />
+    <result column="tele_phone" jdbcType="VARCHAR" property="telePhone" />
+    <result column="tele_level" jdbcType="VARCHAR" property="teleLevel" />
+    <result column="tele_send_time" jdbcType="TIMESTAMP" property="teleSendTime" />
+    <result column="tele_send_person" jdbcType="VARCHAR" property="teleSendPerson" />
+    <result column="main_send_company" jdbcType="VARCHAR" property="mainSendCompany" />
+    <result column="copy_send_company" jdbcType="VARCHAR" property="copySendCompany" />
+    <result column="tele_create_time" jdbcType="TIMESTAMP" property="teleCreateTime" />
+    <result column="tele_create_person_id" jdbcType="INTEGER" property="teleCreatePersonId" />
+    <result column="tele_type" jdbcType="INTEGER" property="teleType" />
+    <result column="tele_isfinish" jdbcType="INTEGER" property="teleIsfinish" />
+    <result column="tele_isfinish_time" jdbcType="TIMESTAMP" property="teleIsfinishTime" />
+    <result column="tele_category" jdbcType="INTEGER" property="teleCategory" />
+    <result column="tele_finishtime" jdbcType="TIMESTAMP" property="teleFinishtime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.arch.common.pojo.TlTelegram">
+    <result column="tele_content" jdbcType="LONGVARCHAR" property="teleContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tele_id, tele_code, tele_name, audit_person, draft_person, tele_phone, tele_level, 
+    tele_send_time, tele_send_person, main_send_company, copy_send_company, tele_create_time, 
+    tele_create_person_id, tele_type, tele_isfinish, tele_isfinish_time, tele_category, 
+    tele_finishtime
+  </sql>
+  <sql id="Blob_Column_List">
+    tele_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tl_telegram
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tl_telegram
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.arch.common.pojo.TlTelegram">
+    insert into tl_telegram (tele_id, tele_code, tele_name, 
+      audit_person, draft_person, tele_phone, 
+      tele_level, tele_send_time, tele_send_person, 
+      main_send_company, copy_send_company, tele_create_time, 
+      tele_create_person_id, tele_type, tele_isfinish, 
+      tele_isfinish_time, tele_category, tele_finishtime, 
+      tele_content)
+    values (#{teleId,jdbcType=INTEGER}, #{teleCode,jdbcType=VARCHAR}, #{teleName,jdbcType=VARCHAR}, 
+      #{auditPerson,jdbcType=VARCHAR}, #{draftPerson,jdbcType=VARCHAR}, #{telePhone,jdbcType=VARCHAR}, 
+      #{teleLevel,jdbcType=VARCHAR}, #{teleSendTime,jdbcType=TIMESTAMP}, #{teleSendPerson,jdbcType=VARCHAR}, 
+      #{mainSendCompany,jdbcType=VARCHAR}, #{copySendCompany,jdbcType=VARCHAR}, #{teleCreateTime,jdbcType=TIMESTAMP}, 
+      #{teleCreatePersonId,jdbcType=INTEGER}, #{teleType,jdbcType=INTEGER}, #{teleIsfinish,jdbcType=INTEGER}, 
+      #{teleIsfinishTime,jdbcType=TIMESTAMP}, #{teleCategory,jdbcType=INTEGER}, #{teleFinishtime,jdbcType=TIMESTAMP}, 
+      #{teleContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.arch.common.pojo.TlTelegram">
+    insert into tl_telegram
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teleId != null">
+        tele_id,
+      </if>
+      <if test="teleCode != null">
+        tele_code,
+      </if>
+      <if test="teleName != null">
+        tele_name,
+      </if>
+      <if test="auditPerson != null">
+        audit_person,
+      </if>
+      <if test="draftPerson != null">
+        draft_person,
+      </if>
+      <if test="telePhone != null">
+        tele_phone,
+      </if>
+      <if test="teleLevel != null">
+        tele_level,
+      </if>
+      <if test="teleSendTime != null">
+        tele_send_time,
+      </if>
+      <if test="teleSendPerson != null">
+        tele_send_person,
+      </if>
+      <if test="mainSendCompany != null">
+        main_send_company,
+      </if>
+      <if test="copySendCompany != null">
+        copy_send_company,
+      </if>
+      <if test="teleCreateTime != null">
+        tele_create_time,
+      </if>
+      <if test="teleCreatePersonId != null">
+        tele_create_person_id,
+      </if>
+      <if test="teleType != null">
+        tele_type,
+      </if>
+      <if test="teleIsfinish != null">
+        tele_isfinish,
+      </if>
+      <if test="teleIsfinishTime != null">
+        tele_isfinish_time,
+      </if>
+      <if test="teleCategory != null">
+        tele_category,
+      </if>
+      <if test="teleFinishtime != null">
+        tele_finishtime,
+      </if>
+      <if test="teleContent != null">
+        tele_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teleId != null">
+        #{teleId,jdbcType=INTEGER},
+      </if>
+      <if test="teleCode != null">
+        #{teleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="teleName != null">
+        #{teleName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditPerson != null">
+        #{auditPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="draftPerson != null">
+        #{draftPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="telePhone != null">
+        #{telePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teleLevel != null">
+        #{teleLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="teleSendTime != null">
+        #{teleSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleSendPerson != null">
+        #{teleSendPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="mainSendCompany != null">
+        #{mainSendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="copySendCompany != null">
+        #{copySendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="teleCreateTime != null">
+        #{teleCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleCreatePersonId != null">
+        #{teleCreatePersonId,jdbcType=INTEGER},
+      </if>
+      <if test="teleType != null">
+        #{teleType,jdbcType=INTEGER},
+      </if>
+      <if test="teleIsfinish != null">
+        #{teleIsfinish,jdbcType=INTEGER},
+      </if>
+      <if test="teleIsfinishTime != null">
+        #{teleIsfinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleCategory != null">
+        #{teleCategory,jdbcType=INTEGER},
+      </if>
+      <if test="teleFinishtime != null">
+        #{teleFinishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleContent != null">
+        #{teleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.arch.common.pojo.TlTelegram">
+    update tl_telegram
+    <set>
+      <if test="teleCode != null">
+        tele_code = #{teleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="teleName != null">
+        tele_name = #{teleName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditPerson != null">
+        audit_person = #{auditPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="draftPerson != null">
+        draft_person = #{draftPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="telePhone != null">
+        tele_phone = #{telePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teleLevel != null">
+        tele_level = #{teleLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="teleSendTime != null">
+        tele_send_time = #{teleSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleSendPerson != null">
+        tele_send_person = #{teleSendPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="mainSendCompany != null">
+        main_send_company = #{mainSendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="copySendCompany != null">
+        copy_send_company = #{copySendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="teleCreateTime != null">
+        tele_create_time = #{teleCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleCreatePersonId != null">
+        tele_create_person_id = #{teleCreatePersonId,jdbcType=INTEGER},
+      </if>
+      <if test="teleType != null">
+        tele_type = #{teleType,jdbcType=INTEGER},
+      </if>
+      <if test="teleIsfinish != null">
+        tele_isfinish = #{teleIsfinish,jdbcType=INTEGER},
+      </if>
+      <if test="teleIsfinishTime != null">
+        tele_isfinish_time = #{teleIsfinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleCategory != null">
+        tele_category = #{teleCategory,jdbcType=INTEGER},
+      </if>
+      <if test="teleFinishtime != null">
+        tele_finishtime = #{teleFinishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleContent != null">
+        tele_content = #{teleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.arch.common.pojo.TlTelegram">
+    update tl_telegram
+    set tele_code = #{teleCode,jdbcType=VARCHAR},
+      tele_name = #{teleName,jdbcType=VARCHAR},
+      audit_person = #{auditPerson,jdbcType=VARCHAR},
+      draft_person = #{draftPerson,jdbcType=VARCHAR},
+      tele_phone = #{telePhone,jdbcType=VARCHAR},
+      tele_level = #{teleLevel,jdbcType=VARCHAR},
+      tele_send_time = #{teleSendTime,jdbcType=TIMESTAMP},
+      tele_send_person = #{teleSendPerson,jdbcType=VARCHAR},
+      main_send_company = #{mainSendCompany,jdbcType=VARCHAR},
+      copy_send_company = #{copySendCompany,jdbcType=VARCHAR},
+      tele_create_time = #{teleCreateTime,jdbcType=TIMESTAMP},
+      tele_create_person_id = #{teleCreatePersonId,jdbcType=INTEGER},
+      tele_type = #{teleType,jdbcType=INTEGER},
+      tele_isfinish = #{teleIsfinish,jdbcType=INTEGER},
+      tele_isfinish_time = #{teleIsfinishTime,jdbcType=TIMESTAMP},
+      tele_category = #{teleCategory,jdbcType=INTEGER},
+      tele_finishtime = #{teleFinishtime,jdbcType=TIMESTAMP},
+      tele_content = #{teleContent,jdbcType=LONGVARCHAR}
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.arch.common.pojo.TlTelegram">
+    update tl_telegram
+    set tele_code = #{teleCode,jdbcType=VARCHAR},
+      tele_name = #{teleName,jdbcType=VARCHAR},
+      audit_person = #{auditPerson,jdbcType=VARCHAR},
+      draft_person = #{draftPerson,jdbcType=VARCHAR},
+      tele_phone = #{telePhone,jdbcType=VARCHAR},
+      tele_level = #{teleLevel,jdbcType=VARCHAR},
+      tele_send_time = #{teleSendTime,jdbcType=TIMESTAMP},
+      tele_send_person = #{teleSendPerson,jdbcType=VARCHAR},
+      main_send_company = #{mainSendCompany,jdbcType=VARCHAR},
+      copy_send_company = #{copySendCompany,jdbcType=VARCHAR},
+      tele_create_time = #{teleCreateTime,jdbcType=TIMESTAMP},
+      tele_create_person_id = #{teleCreatePersonId,jdbcType=INTEGER},
+      tele_type = #{teleType,jdbcType=INTEGER},
+      tele_isfinish = #{teleIsfinish,jdbcType=INTEGER},
+      tele_isfinish_time = #{teleIsfinishTime,jdbcType=TIMESTAMP},
+      tele_category = #{teleCategory,jdbcType=INTEGER},
+      tele_finishtime = #{teleFinishtime,jdbcType=TIMESTAMP}
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.arch.common.pojo.TlTelegram">
+    <id column="tele_id" jdbcType="INTEGER" property="teleId" />
+    <result column="tele_code" jdbcType="VARCHAR" property="teleCode" />
+    <result column="tele_name" jdbcType="VARCHAR" property="teleName" />
+    <result column="audit_person" jdbcType="VARCHAR" property="auditPerson" />
+    <result column="draft_person" jdbcType="VARCHAR" property="draftPerson" />
+    <result column="tele_phone" jdbcType="VARCHAR" property="telePhone" />
+    <result column="tele_level" jdbcType="VARCHAR" property="teleLevel" />
+    <result column="tele_send_time" jdbcType="TIMESTAMP" property="teleSendTime" />
+    <result column="tele_send_person" jdbcType="VARCHAR" property="teleSendPerson" />
+    <result column="main_send_company" jdbcType="VARCHAR" property="mainSendCompany" />
+    <result column="copy_send_company" jdbcType="VARCHAR" property="copySendCompany" />
+    <result column="tele_create_time" jdbcType="TIMESTAMP" property="teleCreateTime" />
+    <result column="tele_create_person_id" jdbcType="INTEGER" property="teleCreatePersonId" />
+    <result column="tele_type" jdbcType="INTEGER" property="teleType" />
+    <result column="tele_isfinish" jdbcType="INTEGER" property="teleIsfinish" />
+    <result column="tele_isfinish_time" jdbcType="TIMESTAMP" property="teleIsfinishTime" />
+    <result column="tele_category" jdbcType="INTEGER" property="teleCategory" />
+    <result column="tele_finishtime" jdbcType="TIMESTAMP" property="teleFinishtime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.arch.common.pojo.TlTelegram">
+    <result column="tele_content" jdbcType="LONGVARCHAR" property="teleContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tele_id, tele_code, tele_name, audit_person, draft_person, tele_phone, tele_level, 
+    tele_send_time, tele_send_person, main_send_company, copy_send_company, tele_create_time, 
+    tele_create_person_id, tele_type, tele_isfinish, tele_isfinish_time, tele_category, 
+    tele_finishtime
+  </sql>
+  <sql id="Blob_Column_List">
+    tele_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tl_telegram
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tl_telegram
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.arch.common.pojo.TlTelegram">
+    insert into tl_telegram (tele_id, tele_code, tele_name, 
+      audit_person, draft_person, tele_phone, 
+      tele_level, tele_send_time, tele_send_person, 
+      main_send_company, copy_send_company, tele_create_time, 
+      tele_create_person_id, tele_type, tele_isfinish, 
+      tele_isfinish_time, tele_category, tele_finishtime, 
+      tele_content)
+    values (#{teleId,jdbcType=INTEGER}, #{teleCode,jdbcType=VARCHAR}, #{teleName,jdbcType=VARCHAR}, 
+      #{auditPerson,jdbcType=VARCHAR}, #{draftPerson,jdbcType=VARCHAR}, #{telePhone,jdbcType=VARCHAR}, 
+      #{teleLevel,jdbcType=VARCHAR}, #{teleSendTime,jdbcType=TIMESTAMP}, #{teleSendPerson,jdbcType=VARCHAR}, 
+      #{mainSendCompany,jdbcType=VARCHAR}, #{copySendCompany,jdbcType=VARCHAR}, #{teleCreateTime,jdbcType=TIMESTAMP}, 
+      #{teleCreatePersonId,jdbcType=INTEGER}, #{teleType,jdbcType=INTEGER}, #{teleIsfinish,jdbcType=INTEGER}, 
+      #{teleIsfinishTime,jdbcType=TIMESTAMP}, #{teleCategory,jdbcType=INTEGER}, #{teleFinishtime,jdbcType=TIMESTAMP}, 
+      #{teleContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.arch.common.pojo.TlTelegram">
+    insert into tl_telegram
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teleId != null">
+        tele_id,
+      </if>
+      <if test="teleCode != null">
+        tele_code,
+      </if>
+      <if test="teleName != null">
+        tele_name,
+      </if>
+      <if test="auditPerson != null">
+        audit_person,
+      </if>
+      <if test="draftPerson != null">
+        draft_person,
+      </if>
+      <if test="telePhone != null">
+        tele_phone,
+      </if>
+      <if test="teleLevel != null">
+        tele_level,
+      </if>
+      <if test="teleSendTime != null">
+        tele_send_time,
+      </if>
+      <if test="teleSendPerson != null">
+        tele_send_person,
+      </if>
+      <if test="mainSendCompany != null">
+        main_send_company,
+      </if>
+      <if test="copySendCompany != null">
+        copy_send_company,
+      </if>
+      <if test="teleCreateTime != null">
+        tele_create_time,
+      </if>
+      <if test="teleCreatePersonId != null">
+        tele_create_person_id,
+      </if>
+      <if test="teleType != null">
+        tele_type,
+      </if>
+      <if test="teleIsfinish != null">
+        tele_isfinish,
+      </if>
+      <if test="teleIsfinishTime != null">
+        tele_isfinish_time,
+      </if>
+      <if test="teleCategory != null">
+        tele_category,
+      </if>
+      <if test="teleFinishtime != null">
+        tele_finishtime,
+      </if>
+      <if test="teleContent != null">
+        tele_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teleId != null">
+        #{teleId,jdbcType=INTEGER},
+      </if>
+      <if test="teleCode != null">
+        #{teleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="teleName != null">
+        #{teleName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditPerson != null">
+        #{auditPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="draftPerson != null">
+        #{draftPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="telePhone != null">
+        #{telePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teleLevel != null">
+        #{teleLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="teleSendTime != null">
+        #{teleSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleSendPerson != null">
+        #{teleSendPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="mainSendCompany != null">
+        #{mainSendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="copySendCompany != null">
+        #{copySendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="teleCreateTime != null">
+        #{teleCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleCreatePersonId != null">
+        #{teleCreatePersonId,jdbcType=INTEGER},
+      </if>
+      <if test="teleType != null">
+        #{teleType,jdbcType=INTEGER},
+      </if>
+      <if test="teleIsfinish != null">
+        #{teleIsfinish,jdbcType=INTEGER},
+      </if>
+      <if test="teleIsfinishTime != null">
+        #{teleIsfinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleCategory != null">
+        #{teleCategory,jdbcType=INTEGER},
+      </if>
+      <if test="teleFinishtime != null">
+        #{teleFinishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleContent != null">
+        #{teleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.arch.common.pojo.TlTelegram">
+    update tl_telegram
+    <set>
+      <if test="teleCode != null">
+        tele_code = #{teleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="teleName != null">
+        tele_name = #{teleName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditPerson != null">
+        audit_person = #{auditPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="draftPerson != null">
+        draft_person = #{draftPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="telePhone != null">
+        tele_phone = #{telePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teleLevel != null">
+        tele_level = #{teleLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="teleSendTime != null">
+        tele_send_time = #{teleSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleSendPerson != null">
+        tele_send_person = #{teleSendPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="mainSendCompany != null">
+        main_send_company = #{mainSendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="copySendCompany != null">
+        copy_send_company = #{copySendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="teleCreateTime != null">
+        tele_create_time = #{teleCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleCreatePersonId != null">
+        tele_create_person_id = #{teleCreatePersonId,jdbcType=INTEGER},
+      </if>
+      <if test="teleType != null">
+        tele_type = #{teleType,jdbcType=INTEGER},
+      </if>
+      <if test="teleIsfinish != null">
+        tele_isfinish = #{teleIsfinish,jdbcType=INTEGER},
+      </if>
+      <if test="teleIsfinishTime != null">
+        tele_isfinish_time = #{teleIsfinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleCategory != null">
+        tele_category = #{teleCategory,jdbcType=INTEGER},
+      </if>
+      <if test="teleFinishtime != null">
+        tele_finishtime = #{teleFinishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teleContent != null">
+        tele_content = #{teleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.arch.common.pojo.TlTelegram">
+    update tl_telegram
+    set tele_code = #{teleCode,jdbcType=VARCHAR},
+      tele_name = #{teleName,jdbcType=VARCHAR},
+      audit_person = #{auditPerson,jdbcType=VARCHAR},
+      draft_person = #{draftPerson,jdbcType=VARCHAR},
+      tele_phone = #{telePhone,jdbcType=VARCHAR},
+      tele_level = #{teleLevel,jdbcType=VARCHAR},
+      tele_send_time = #{teleSendTime,jdbcType=TIMESTAMP},
+      tele_send_person = #{teleSendPerson,jdbcType=VARCHAR},
+      main_send_company = #{mainSendCompany,jdbcType=VARCHAR},
+      copy_send_company = #{copySendCompany,jdbcType=VARCHAR},
+      tele_create_time = #{teleCreateTime,jdbcType=TIMESTAMP},
+      tele_create_person_id = #{teleCreatePersonId,jdbcType=INTEGER},
+      tele_type = #{teleType,jdbcType=INTEGER},
+      tele_isfinish = #{teleIsfinish,jdbcType=INTEGER},
+      tele_isfinish_time = #{teleIsfinishTime,jdbcType=TIMESTAMP},
+      tele_category = #{teleCategory,jdbcType=INTEGER},
+      tele_finishtime = #{teleFinishtime,jdbcType=TIMESTAMP},
+      tele_content = #{teleContent,jdbcType=LONGVARCHAR}
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.arch.common.pojo.TlTelegram">
+    update tl_telegram
+    set tele_code = #{teleCode,jdbcType=VARCHAR},
+      tele_name = #{teleName,jdbcType=VARCHAR},
+      audit_person = #{auditPerson,jdbcType=VARCHAR},
+      draft_person = #{draftPerson,jdbcType=VARCHAR},
+      tele_phone = #{telePhone,jdbcType=VARCHAR},
+      tele_level = #{teleLevel,jdbcType=VARCHAR},
+      tele_send_time = #{teleSendTime,jdbcType=TIMESTAMP},
+      tele_send_person = #{teleSendPerson,jdbcType=VARCHAR},
+      main_send_company = #{mainSendCompany,jdbcType=VARCHAR},
+      copy_send_company = #{copySendCompany,jdbcType=VARCHAR},
+      tele_create_time = #{teleCreateTime,jdbcType=TIMESTAMP},
+      tele_create_person_id = #{teleCreatePersonId,jdbcType=INTEGER},
+      tele_type = #{teleType,jdbcType=INTEGER},
+      tele_isfinish = #{teleIsfinish,jdbcType=INTEGER},
+      tele_isfinish_time = #{teleIsfinishTime,jdbcType=TIMESTAMP},
+      tele_category = #{teleCategory,jdbcType=INTEGER},
+      tele_finishtime = #{teleFinishtime,jdbcType=TIMESTAMP}
+    where tele_id = #{teleId,jdbcType=INTEGER}
+  </update>
+</mapper>

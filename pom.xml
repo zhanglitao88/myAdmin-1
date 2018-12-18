@@ -8,11 +8,12 @@
         <version>2.1.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.test.admin</groupId>
-    <artifactId>admin</artifactId>
+    <groupId>com.perfect.architecture</groupId>
+    <artifactId>architecture</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>admin</name>
-    <description>Demo project for Spring Boot</description>
+    <name>architecture</name>
+    <description>need to build some new element</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,7 +100,10 @@
             <version>2.1.0.RELEASE</version>
         </dependency>
     </dependencies>
-
+    <modules>
+        <module>arch_base_modules</module>
+        <module>arch_web_api</module>
+    </modules>
     <build>
         <plugins>
             <plugin>
